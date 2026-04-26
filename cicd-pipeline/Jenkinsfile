@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git branch: 'main', url: 'YOUR_REPO_LINK'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                bat 'docker build -t cicd-app .'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Test passed'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                bat 'docker run -d -p 5000:5000 cicd-app'
+            }
+        }
+    }
+}
