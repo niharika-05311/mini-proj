@@ -1,0 +1,25 @@
+1. Open Jenkins → http://localhost:9090
+
+2. Create New Item → Pipeline
+
+3. Add GitHub repository URL
+
+4. Pipeline stages:
+   - Checkout
+   - Build
+   - Test
+   - Deploy
+
+5. Build commands:
+   docker build -t flask-app .
+   docker run -d -p 5000:5000 flask-app
+
+6. Click "Build Now"
+
+7. Check Console Output
+
+8. Verify app → http://localhost:5000
+
+9. Run Jenkins:
+   java -jar jenkins.war
+   java -jar jenkins.war --httpPort=9090
